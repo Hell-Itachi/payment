@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <parameters>
+        <parameter key="pay.container.aware.class" >Pay\PaymentBundle\Listener\ContainerAware</parameter>
+        <parameter key="pay.create.post.service.class">Pay\PaymentBundle\Service\CreatePostService</parameter>
+        <parameter key="post.response.service.class">Pay\PaymentBundle\Service\PostResponseService</parameter>
+        <parameter key="csv.response.service.class">Pay\PaymentBundle\Service\СsvResponseService</parameter>
+        <parameter key="json.response.service.class">Pay\PaymentBundle\Service\JsonResponseService</parameter>
+        <parameter key="pd.create.payment.service.class">Pay\PaymentBundle\Service\PdCreatePaymentService</parameter>
+    </parameters>
+
+    <services>
+            <service id="pay.container.aware" abstract="true" class="%pay.container.aware.class%" >
+                <call method="setContainer">
+                    <argument type="service" id="service_container"/>
+                </call>
+            </service>
+            <service id="pay.create.post.service"  parent="pay.container.aware" class="%pay.create.post.service.class%"/>
+            <service id="post.response.service"  parent="pay.container.aware" class="%post.response.service.class%"/>
+            <service id="csv.response.service"  parent="pay.container.aware" class="%csv.response.service.class%"/>
+            <service id="json.response.service"  parent="pay.container.aware" class="%json.response.service.class%"/>
+            <service id="pd.create.payment.service"  parent="pay.container.aware" class="%pd.create.payment.service.class%"/>
+    </services>
+</container>

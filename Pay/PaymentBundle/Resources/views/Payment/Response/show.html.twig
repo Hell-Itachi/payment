@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Payment\Response</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Systemid</th>
+                <td>{{ entity.systemId }}</td>
+            </tr>
+            <tr>
+                <th>Transactionid</th>
+                <td>{{ entity.transactionId }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ entity.amount }}</td>
+            </tr>
+            <tr>
+                <th>Currency</th>
+                <td>{{ entity.currency }}</td>
+            </tr>
+            <tr>
+                <th>Sendid</th>
+                <td>{{ entity.sendId }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('response') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('response_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('response_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
