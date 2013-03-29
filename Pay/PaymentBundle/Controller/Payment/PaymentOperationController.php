@@ -52,6 +52,7 @@ class PaymentOperationController extends Controller
      */
     public function paymentResponseAction(Request $request, $id)
     {
+        $request = $request->request;
         //Cyщность Payment
         echo "<pre>";
         print_r($request);
