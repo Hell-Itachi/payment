@@ -28,6 +28,9 @@ class CreatePostService extends ContainerAware
             $payment->getSendId() => $send_id,
             $payment->getToken() => $payment->getPayAccId(),
             $payment->getDescription() => "",
+            "LMI_FAIL_URL" => "http://demo2.qwer.com.ua/paymentResponse/1",
+            "LMI_SUCCESS_URL" => "http://demo2.qwer.com.ua/paymentResponse/1",
+            "LMI_SUCCESS_URL" => 1
         );
 
         return array(

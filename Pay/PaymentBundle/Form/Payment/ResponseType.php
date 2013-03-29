@@ -17,6 +17,7 @@ class ResponseType extends AbstractType
             ->add('sendId')
             ->add('date')
             ->add('paySystem')
+            ->add('payAccountId')
         ;
     }
 

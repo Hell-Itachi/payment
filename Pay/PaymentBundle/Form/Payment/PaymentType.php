@@ -20,6 +20,9 @@ class PaymentType extends AbstractType
             ->add('token')
             ->add('description')
             ->add('purseCurrency')
+            ->add('successUrl')
+            ->add('errorUrl')
+            ->add('methodRequestData')
         ;
     }
 
