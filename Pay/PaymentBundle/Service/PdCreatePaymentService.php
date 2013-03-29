@@ -11,6 +11,7 @@ class PdCreatePaymentService extends ContainerAware
     /**
      * 
      * @param type $data
+     * @return type
      */
     public function CreatePayPd($data)
     {
@@ -22,8 +23,10 @@ class PdCreatePaymentService extends ContainerAware
         
         $pd->setParent($pd_parent);
         $pd->setSumma1($data['Amount']);
+        $pd->setSumma2($data['Currency']);
         $pd->setTxt1($data['Date']);
         $pd->setN($data['Transactionid']);
+        $pd->setTxt2($data['payAccountId']);
         $pd->setDate(date("Y-m-d H:i:s"));
         $pd->setDtcor(date("Y-m-d H:i:s"));
         $pd->setStatus(1);
@@ -32,10 +35,16 @@ class PdCreatePaymentService extends ContainerAware
         $this->em->flush();
 
         $id=$pd->getId();
-        $this->CreateTrans($data['Sendid']);
-        return $id;
+        return array(
+            'pdId' => $id, 
+            'Sendid' => $data['Sendid']);
     }
-
+    
+    /**
+     * 
+     * @param type $id
+     * @return boolean
+     */
     public function CreateTrans($id)
     {
         $pd = $this->em

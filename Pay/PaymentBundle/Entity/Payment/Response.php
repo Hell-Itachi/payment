@@ -35,6 +35,13 @@ class Response
      * @ORM\Column(name="transaction_id", type="string", length=30)
      */
     private $transactionId;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pay_acc_id", type="string", length=30)
+     */
+    private $payAccountId;
 
     /**
      * @var string
@@ -217,13 +224,41 @@ class Response
         return $this->date;
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function getPaySystem()
     {
         return $this->paySystem;
     }
-
+    
+    /**
+     * 
+     * @param type $paySystem
+     */
     public function setPaySystem($paySystem)
     {
         $this->paySystem = $paySystem;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getPayAccountId()
+    {
+        return $this->payAccountId;
+    }
+    
+    /**
+     * 
+     * @param type $payAccountId
+     */
+    public function setPayAccountId($payAccountId)
+    {
+        $this->payAccountId = $payAccountId;
+    }
+
+
 }

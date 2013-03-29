@@ -21,11 +21,14 @@ class PostResponseService extends ContainerAware
                 ->findOneBy(array('systemId'=>$id));
         $data = array();
         $data['Transactionid'] = $request[$response->getTransactionid()];
-        $data['Amount'] = $request[$response->getAmount()];
+        $data['Amount']= !empty($request[$response->getAmount()])?$request[$response->getAmount()]:null;
         if(!is_null($response->getCurrency()))
-        $data['Currency'] = $request[$response->getCurrency()];
+            $data['Currency'] = $request[$response->getCurrency()];
+        else 
+            $data['Currency']=null;
         $data['Sendid'] = $request[$response->getSendid()];
         $data['Date'] = $request[$response->getDate()];
+        $data['payAccountId'] = $request[$response->getPayAccountId()];
         
         return $data;
     }

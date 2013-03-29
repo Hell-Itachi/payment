@@ -305,6 +305,7 @@ class Payment
     {
         return $this->purseCurrency;
     }
+    
     /**
      * 
      * @param type $purseCurrency
@@ -313,38 +314,65 @@ class Payment
     {
         $this->purseCurrency = $purseCurrency;
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
     public function getErrorUrl()
     {
         return $this->errorUrl;
     }
-
+    
+    /**
+     * 
+     * @param type $errorUrl
+     */
     public function setErrorUrl($errorUrl)
     {
         $this->errorUrl = $errorUrl;
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
     public function getSuccessUrl()
     {
         return $this->successUrl;
     }
-
+    
+    /**
+     * 
+     * @param type $successUrl
+     */
     public function setSuccessUrl($successUrl)
     {
         $this->successUrl = $successUrl;
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
     public function getMethodRequestData()
     {
         return $this->methodRequestData;
     }
-
+    
+    /**
+     * 
+     * @param type $methodRequestData
+     */
     public function setMethodRequestData($methodRequestData)
     {
         $this->methodRequestData = $methodRequestData;
     }
-
-
+    
+    /**
+     * 
+     * @return type
+     */
     public function __toString()
     {
         return (string)$this->paysystem;
