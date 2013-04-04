@@ -11,24 +11,25 @@ class PostResponseService extends ContainerAware
     /**
      * 
      * @param type $request
-     * @param type $id
+     * @param type $response
+     * @return type
      */
-    public function getParam($request, $id)
-    {
-        
-        $response = $this->em
-                ->getRepository('PayPaymentBundle:Payment\Response')
-                ->findOneBy(array('systemId'=>$id));
+    public function getParam($request, $response)
+    {        
         $data = array();
         $data['Transactionid'] = $request[$response->getTransactionid()];
-        $data['Amount']= !empty($request[$response->getAmount()])?$request[$response->getAmount()]:null;
+        if(!is_null($response->getAmount())){
+        $data['Amount']= !empty($request[$response->getAmount()])?$request[$response->getAmount()]:null;}
+        else 
+            $data['Amount']=0;
         if(!is_null($response->getCurrency()))
             $data['Currency'] = $request[$response->getCurrency()];
         else 
-            $data['Currency']=null;
-        $data['Sendid'] = $request[$response->getSendid()];
+            $data['Currency']=$response->getPaySystem()->getCurrency();
+        $data['sendId'] = $request[$response->getSendid()];
         $data['Date'] = $request[$response->getDate()];
         $data['payAccountId'] = $request[$response->getPayAccountId()];
+        $data['payerPurse'] = $request[$response->getPayerPurse()];
         
         return $data;
     }

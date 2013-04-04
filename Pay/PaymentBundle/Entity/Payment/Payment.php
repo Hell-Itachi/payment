@@ -36,6 +36,13 @@ class Payment
     private $payAccId;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pay_acc_secret_key", type="string", length=255)
+     */
+    private $payAccSecretKey;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="owner", type="string", length=255, nullable=true)
@@ -52,7 +59,7 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="currency", type="string", length=255, nullable=true)
+     * @ORM\Column(name="currency", type="string", length=255)
      */
     private $currency;
 
@@ -76,12 +83,14 @@ class Payment
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
+    
     /**
      * @var string
      *
      * @ORM\Column(name="purse_currency", type="string", length=10, nullable=true)
      */
     private $purseCurrency;
+    
     /**
      *
      * @var string      
@@ -89,6 +98,7 @@ class Payment
      * @ORM\Column(name="error_url", type="string", length=150, nullable=true)
      */
     private $errorUrl;
+    
     /**
      *
      * @var string
@@ -96,6 +106,7 @@ class Payment
      * @ORM\Column(name="success_url", type="string", length=150, nullable=true) 
      */
     private $successUrl;
+    
     /**
      *
      * @var string 
@@ -103,6 +114,14 @@ class Payment
      * @ORM\Column(name="metohod_request_data", type="string", length=50, nullable=true)
      */
     private $methodRequestData;
+    
+    /**
+     *
+     * @var text $fieldOrder 
+     * 
+     * @ORM\Column(name="field_order", type="text")
+     */
+    private $fieldOrder;
     
     /**
      * Get id
@@ -369,6 +388,42 @@ class Payment
         $this->methodRequestData = $methodRequestData;
     }
     
+    /**
+     * 
+     * @return type
+     */
+    public function getPayAccSecretKey()
+    {
+        return $this->payAccSecretKey;
+    }
+
+    /**
+     * 
+     * @param type $payAccSecretKey
+     */
+    public function setPayAccSecretKey($payAccSecretKey)
+    {
+        $this->payAccSecretKey = $payAccSecretKey;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getFieldOrder()
+    {
+        return $this->fieldOrder;
+    }
+
+    /**
+     * 
+     * @param type $fieldOrder
+     */
+    public function setFieldOrder($fieldOrder)
+    {
+        $this->fieldOrder = $fieldOrder;
+    }
+        
     /**
      * 
      * @return type

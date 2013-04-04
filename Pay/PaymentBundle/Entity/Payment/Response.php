@@ -70,12 +70,56 @@ class Response
      * @ORM\Column(name="date", type="string", length=30)
      */
     private $date;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="payer_purse", type="string", length=30)
+     */
+    private $payerPurse;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="test_mode", type="string", length=30)
+     */
+    private $testMode;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="secret_key", type="string", length=30)
+     */
+    private $secretKey;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hash", type="string", length=30)
+     */
+    private $hash;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="WM_id_payer", type="string", length=30)
+     */
+    private $WMIdPayer;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="WM_id_acc", type="string", length=30)
+     */
+    private $WMIdAcc;
+    
     /**
      * @ORM\OneToOne(targetEntity="Pay\PaymentBundle\Entity\Payment\Payment")
      * @ORM\JoinColumn(name="system_id", referencedColumnName="id")
      * 
      */
     private $paySystem;
+    
     /**
      * Get id
      *
@@ -259,6 +303,100 @@ class Response
     {
         $this->payAccountId = $payAccountId;
     }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getPayerPurse()
+    {
+        return $this->payerPurse;
+    }
+
+    /**
+     * 
+     * @param type $payerPurse
+     */
+    public function setPayerPurse($payerPurse)
+    {
+        $this->payerPurse = $payerPurse;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getTestMode()
+    {
+        return $this->testMode;
+    }
+
+    /**
+     * 
+     * @param type $testMode
+     */
+    public function setTestMode($testMode)
+    {
+        $this->testMode = $testMode;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getSecretKey()
+    {
+        return $this->secretKey;
+    }
+
+    /**
+     * 
+     * @param type $secretKey
+     */
+    public function setSecretKey($secretKey)
+    {
+        $this->secretKey = $secretKey;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
+    /**
+     * 
+     * @param type $hash
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+    }
+
+    public function getWMIdPayer()
+    {
+        return $this->WMIdPayer;
+    }
+
+    public function setWMIdPayer($WMIdPayer)
+    {
+        $this->WMIdPayer = $WMIdPayer;
+    }
+
+    public function getWMIdAcc()
+    {
+        return $this->WMIdAcc;
+    }
+
+    public function setWMIdAcc($WMIdAcc)
+    {
+        $this->WMIdAcc = $WMIdAcc;
+    }
+
+
 
 
 }

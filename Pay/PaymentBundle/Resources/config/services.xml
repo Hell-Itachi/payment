@@ -12,6 +12,7 @@
         <parameter key="csv.response.service.class">Pay\PaymentBundle\Service\СsvResponseService</parameter>
         <parameter key="json.response.service.class">Pay\PaymentBundle\Service\JsonResponseService</parameter>
         <parameter key="pd.create.payment.service.class">Pay\PaymentBundle\Service\PdCreatePaymentService</parameter>
+        <parameter key="response.hash.test.service.class">Pay\PaymentBundle\Service\ResponseHashTestService</parameter>
     </parameters>
 
     <services>
@@ -25,5 +26,6 @@
             <service id="csv.response.service"  parent="pay.container.aware" class="%csv.response.service.class%"/>
             <service id="json.response.service"  parent="pay.container.aware" class="%json.response.service.class%"/>
             <service id="pd.create.payment.service"  parent="pay.container.aware" class="%pd.create.payment.service.class%"/>
+            <service id="response.hash.test.service"  parent="pay.container.aware" class="%response.hash.test.service.class%"/>
     </services>
 </container>

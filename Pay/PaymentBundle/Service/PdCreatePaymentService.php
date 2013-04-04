@@ -3,8 +3,8 @@
 namespace Pay\PaymentBundle\Service;
 
 use Itc\AdminBundle\Listener\ContainerAware;
-use Itc\DocumentsBundle\Entity\Pd\Pd;
-
+use Pay\PaymentBundle\Entity\PdPayment\PdPayment;
+use Itc\DocumentsBundle\Entity\Pd\Trans;
 class PdCreatePaymentService extends ContainerAware
 {
 
@@ -15,47 +15,45 @@ class PdCreatePaymentService extends ContainerAware
      */
     public function CreatePayPd($data)
     {
-        $pd = new Pd();
+        $newPd = new PdPayment();
+        $trans = new Trans();
         
         $pd_parent = $this->em
-                ->getRepository('ItcDocumentsBundle:Pd\Pd')
-                ->find($data['Sendid']);
+                ->getRepository('ItcDocumentsBundle:PdOrder\PdOrder')
+                ->find($data['sendId']);
         
-        $pd->setParent($pd_parent);
-        $pd->setSumma1($data['Amount']);
-        $pd->setSumma2($data['Currency']);
-        $pd->setTxt1($data['Date']);
-        $pd->setN($data['Transactionid']);
-        $pd->setTxt2($data['payAccountId']);
-        $pd->setDate(date("Y-m-d H:i:s"));
-        $pd->setDtcor(date("Y-m-d H:i:s"));
-        $pd->setStatus(1);
-
-        $this->em->persist($pd);
+        $dql = "SELECT SUM(e.summa) AS balance FROM ItcDocumentsBundle:Pd\Trans e " .
+       "WHERE e.pdid = ?1";
+        $allTrans = $this->em->createQuery($dql)
+              ->setParameter(1, $pd_parent->getId())
+              ->getSingleScalarResult();
+        
+        
+        $newPd->setParentPd($pd_parent);
+        $newPd->setSumma1($data['Amount']);
+        $newPd->setTxt1($data['payerPurse']);
+        $newPd->setN($data['Transactionid']);
+        $newPd->setTxt2($data['payAccountId']);
+        $newPd->setCurrency($data['Currency']);
+        $newPd->setDate(new \DateTime($data['Date']));
+        $newPd->setStatus(1);
+        $this->em->persist($newPd);
+        
+        $trans->setPd($pd_parent);
+        $trans->setSumma($data['Amount']);
+        $this->em->persist($trans);
+        if(($allTrans+$data['Amount']) >= ($pd_parent->getSumma1()))
+        {
+            $pd_parent->setStatus(2);
+            $this->em->persist($pd_parent);
+        }
         $this->em->flush();
-
-        $id=$pd->getId();
+        
+        $id=$newPd->getId();
         return array(
             'pdId' => $id, 
-            'Sendid' => $data['Sendid']);
+            'sendId' => $data['sendId']);
     }
     
-    /**
-     * 
-     * @param type $id
-     * @return boolean
-     */
-    public function CreateTrans($id)
-    {
-        $pd = $this->em
-                ->getRepository('ItcDocumentsBundle:Pd\Pd')
-                ->find($id);
-
-        $pd->setStatus(2);
-        $this->em->persist($pd);
-        $this->em->flush();
-
-        return true;
-    }
 
 }
