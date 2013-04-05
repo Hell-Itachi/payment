@@ -17,17 +17,16 @@ class PdCreatePaymentService extends ContainerAware
     {
         $newPd = new PdPayment();
         $trans = new Trans();
-        
+        $hashTest = $this->container->get('response.hash.test.service');
+        $hashTest->saveRequest($data, 'create paypd1');
         $pd_parent = $this->em
                 ->getRepository('ItcDocumentsBundle:PdOrder\PdOrder')
                 ->find($data['sendId']);
-        
         $dql = "SELECT SUM(e.summa) AS balance FROM ItcDocumentsBundle:Pd\Trans e " .
        "WHERE e.pdid = ?1";
         $allTrans = $this->em->createQuery($dql)
               ->setParameter(1, $pd_parent->getId())
               ->getSingleScalarResult();
-        
         
         $newPd->setParentPd($pd_parent);
         $newPd->setSumma1($data['Amount']);
@@ -42,13 +41,15 @@ class PdCreatePaymentService extends ContainerAware
         $trans->setPd($pd_parent);
         $trans->setSumma($data['Amount']);
         $this->em->persist($trans);
+        $hashTest->saveRequest($data, 'create paypd2');
         if(($allTrans+$data['Amount']) >= ($pd_parent->getSumma1()))
         {
             $pd_parent->setStatus(2);
             $this->em->persist($pd_parent);
+            $hashTest->saveRequest($data, 'create paypd3');
         }
         $this->em->flush();
-        
+        $hashTest->saveRequest($data, 'create paypd4');
         $id=$newPd->getId();
         return array(
             'pdId' => $id, 

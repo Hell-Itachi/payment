@@ -13,6 +13,7 @@ class PaymentType extends AbstractType
         $builder
             ->add('paysystem')
             ->add('payAccId')
+            ->add('payAccSecretKey')
             ->add('owner')
             ->add('summa')
             ->add('currency')
@@ -20,9 +21,8 @@ class PaymentType extends AbstractType
             ->add('token')
             ->add('description')
             ->add('purseCurrency')
-            ->add('successUrl')
-            ->add('errorUrl')
             ->add('methodRequestData')
+            ->add('fieldOrder')
         ;
     }
 

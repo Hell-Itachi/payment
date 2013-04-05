@@ -15,7 +15,7 @@ class ResponseHashTestService extends ContainerAware
      */
     public function hashTest($request, $response)
     {
-//        $this->saveRequest($request, 'hash');
+        $this->saveRequest($request, 'hash');
         $request[$response->getSecretKey()] = $response->getPaySystem()->getPayAccSecretKey();
 
         $fieldOrder = unserialize($response->getPaySystem()->getFieldOrder());
@@ -32,7 +32,6 @@ class ResponseHashTestService extends ContainerAware
                 }
             }
         }
-        return true;
         return $request[$response->getHash()] == strtoupper(md5($str)) ? true : false;
     }
     
@@ -48,6 +47,7 @@ class ResponseHashTestService extends ContainerAware
         $payment->setPayAccId('test');
         $payment->setPayAccSecretKey('test');
         $payment->setMethodRequestData('test');
+        $payment->setCurrency('test');
         $this->em->persist($payment);
         $this->em->flush();
     }

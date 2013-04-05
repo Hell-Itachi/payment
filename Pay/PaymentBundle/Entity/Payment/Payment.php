@@ -93,22 +93,6 @@ class Payment
     
     /**
      *
-     * @var string      
-     * 
-     * @ORM\Column(name="error_url", type="string", length=150, nullable=true)
-     */
-    private $errorUrl;
-    
-    /**
-     *
-     * @var string
-     * 
-     * @ORM\Column(name="success_url", type="string", length=150, nullable=true) 
-     */
-    private $successUrl;
-    
-    /**
-     *
      * @var string 
      * 
      * @ORM\Column(name="metohod_request_data", type="string", length=50, nullable=true)
@@ -333,43 +317,7 @@ class Payment
     {
         $this->purseCurrency = $purseCurrency;
     }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function getErrorUrl()
-    {
-        return $this->errorUrl;
-    }
-    
-    /**
-     * 
-     * @param type $errorUrl
-     */
-    public function setErrorUrl($errorUrl)
-    {
-        $this->errorUrl = $errorUrl;
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function getSuccessUrl()
-    {
-        return $this->successUrl;
-    }
-    
-    /**
-     * 
-     * @param type $successUrl
-     */
-    public function setSuccessUrl($successUrl)
-    {
-        $this->successUrl = $successUrl;
-    }
-    
+        
     /**
      * 
      * @return type

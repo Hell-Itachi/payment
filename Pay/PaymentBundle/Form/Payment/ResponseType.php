@@ -11,13 +11,20 @@ class ResponseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('systemId')
             ->add('transactionId')
+            ->add('payAccountId')
             ->add('amount')
             ->add('currency')
             ->add('sendId')
             ->add('date')
+            ->add('payerPurse')
+            ->add('testMode')
+            ->add('secretKey')
+            ->add('hash')
+            ->add('WMIdPayer')
+            ->add('WMIdAcc')
             ->add('paySystem')
-            ->add('payAccountId')
         ;
     }
 

@@ -13,14 +13,14 @@ use Pay\PaymentBundle\Form\Payment\PaymentType;
 /**
  * Payment\Payment controller.
  *
- * @Route("/payment")
+ * @Route("/itc_payment")
  */
 class PaymentController extends Controller
 {
     /**
      * Lists all Payment\Payment entities.
      *
-     * @Route("/", name="payment")
+     * @Route("/", name="itc_payment")
      * @Method("GET")
      * @Template()
      */
@@ -38,7 +38,7 @@ class PaymentController extends Controller
     /**
      * Creates a new Payment\Payment entity.
      *
-     * @Route("/", name="payment_create")
+     * @Route("/", name="itc_payment_create")
      * @Method("POST")
      * @Template("PayPaymentBundle:Payment\Payment:new.html.twig")
      */
@@ -53,7 +53,7 @@ class PaymentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('payment_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('itc_payment_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -65,7 +65,7 @@ class PaymentController extends Controller
     /**
      * Displays a form to create a new Payment\Payment entity.
      *
-     * @Route("/new", name="payment_new")
+     * @Route("/new", name="itc_payment_new")
      * @Method("GET")
      * @Template()
      */
@@ -83,7 +83,7 @@ class PaymentController extends Controller
     /**
      * Finds and displays a Payment\Payment entity.
      *
-     * @Route("/{id}", name="payment_show")
+     * @Route("/{id}", name="itc_payment_show")
      * @Method("GET")
      * @Template()
      */
@@ -108,7 +108,7 @@ class PaymentController extends Controller
     /**
      * Displays a form to edit an existing Payment\Payment entity.
      *
-     * @Route("/{id}/edit", name="payment_edit")
+     * @Route("/{id}/edit", name="itc_payment_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,7 +135,7 @@ class PaymentController extends Controller
     /**
      * Edits an existing Payment\Payment entity.
      *
-     * @Route("/{id}", name="payment_update")
+     * @Route("/{id}", name="itc_payment_update")
      * @Method("PUT")
      * @Template("PayPaymentBundle:Payment\Payment:edit.html.twig")
      */
@@ -157,7 +157,7 @@ class PaymentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('payment_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('itc_payment_edit', array('id' => $id)));
         }
 
         return array(
@@ -170,7 +170,7 @@ class PaymentController extends Controller
     /**
      * Deletes a Payment\Payment entity.
      *
-     * @Route("/{id}", name="payment_delete")
+     * @Route("/{id}", name="itc_payment_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -190,7 +190,7 @@ class PaymentController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('payment'));
+        return $this->redirect($this->generateUrl('itc_payment'));
     }
 
     /**

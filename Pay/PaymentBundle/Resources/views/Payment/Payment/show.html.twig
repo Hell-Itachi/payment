@@ -18,6 +18,10 @@
                 <td>{{ entity.payAccId }}</td>
             </tr>
             <tr>
+                <th>Payaccsecretkey</th>
+                <td>{{ entity.payAccSecretKey }}</td>
+            </tr>
+            <tr>
                 <th>Owner</th>
                 <td>{{ entity.owner }}</td>
             </tr>
@@ -42,33 +46,33 @@
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>successUrl</th>
-                <td>{{ entity.successUrl }}</td>
+                <th>Pursecurrency</th>
+                <td>{{ entity.purseCurrency }}</td>
             </tr>
             <tr>
-                <th>payAccountId</th>
-                <td>{{ entity.errorUrl }}</td>
-            </tr>
-            <tr>
-                <th>payAccountId</th>
+                <th>Methodrequestdata</th>
                 <td>{{ entity.methodRequestData }}</td>
+            </tr>
+            <tr>
+                <th>Fieldorder</th>
+                <td>{{ entity.fieldOrder }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('payment') }}">
+        <a href="{{ path('itc_payment') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('payment_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('itc_payment_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
     <li>
-        <form action="{{ path('payment_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('itc_payment_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button type="submit">Delete</button>

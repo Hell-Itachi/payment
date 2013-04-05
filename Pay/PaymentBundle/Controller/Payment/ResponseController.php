@@ -13,14 +13,14 @@ use Pay\PaymentBundle\Form\Payment\ResponseType;
 /**
  * Payment\Response controller.
  *
- * @Route("/response")
+ * @Route("/itc_response")
  */
 class ResponseController extends Controller
 {
     /**
      * Lists all Payment\Response entities.
      *
-     * @Route("/", name="response")
+     * @Route("/", name="itc_response")
      * @Method("GET")
      * @Template()
      */
@@ -38,7 +38,7 @@ class ResponseController extends Controller
     /**
      * Creates a new Payment\Response entity.
      *
-     * @Route("/", name="response_create")
+     * @Route("/", name="itc_response_create")
      * @Method("POST")
      * @Template("PayPaymentBundle:Payment\Response:new.html.twig")
      */
@@ -53,7 +53,7 @@ class ResponseController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('payment_response_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('itc_response_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -65,7 +65,7 @@ class ResponseController extends Controller
     /**
      * Displays a form to create a new Payment\Response entity.
      *
-     * @Route("/new", name="response_new")
+     * @Route("/new", name="itc_response_new")
      * @Method("GET")
      * @Template()
      */
@@ -83,7 +83,7 @@ class ResponseController extends Controller
     /**
      * Finds and displays a Payment\Response entity.
      *
-     * @Route("/{id}", name="response_show")
+     * @Route("/{id}", name="itc_response_show")
      * @Method("GET")
      * @Template()
      */
@@ -108,7 +108,7 @@ class ResponseController extends Controller
     /**
      * Displays a form to edit an existing Payment\Response entity.
      *
-     * @Route("/{id}/edit", name="response_edit")
+     * @Route("/{id}/edit", name="itc_response_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,7 +135,7 @@ class ResponseController extends Controller
     /**
      * Edits an existing Payment\Response entity.
      *
-     * @Route("/{id}", name="response_update")
+     * @Route("/{id}", name="itc_response_update")
      * @Method("PUT")
      * @Template("PayPaymentBundle:Payment\Response:edit.html.twig")
      */
@@ -157,7 +157,7 @@ class ResponseController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('payment_response_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('itc_response_edit', array('id' => $id)));
         }
 
         return array(
@@ -170,7 +170,7 @@ class ResponseController extends Controller
     /**
      * Deletes a Payment\Response entity.
      *
-     * @Route("/{id}", name="response_delete")
+     * @Route("/{id}", name="itc_response_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -190,7 +190,7 @@ class ResponseController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('payment_response'));
+        return $this->redirect($this->generateUrl('itc_response'));
     }
 
     /**

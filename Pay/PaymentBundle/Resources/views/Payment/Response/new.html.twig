@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Payment\Response creation</h1>
 
-    <form action="{{ path('response_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('itc_response_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
             <button type="submit">Create</button>
@@ -12,7 +12,7 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('response') }}">
+        <a href="{{ path('itc_response') }}">
             Back to the list
         </a>
     </li>

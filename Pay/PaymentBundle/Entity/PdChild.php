@@ -14,7 +14,7 @@ use Itc\DocumentsBundle\Entity\Pd\Pd;
  *  }
  * )
  */
-class PdChildPayBundle extends Pd {
+class PdChild extends Pd {
     //put your code here
     public function createTransaction()
     {

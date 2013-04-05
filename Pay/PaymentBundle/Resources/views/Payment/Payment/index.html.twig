@@ -9,40 +9,42 @@
                 <th>Id</th>
                 <th>Paysystem</th>
                 <th>Payaccid</th>
+                <th>Payaccsecretkey</th>
                 <th>Owner</th>
                 <th>Summa</th>
                 <th>Currency</th>
                 <th>Sendid</th>
                 <th>Token</th>
                 <th>Description</th>
-                <th>successUrl</th>
-                <th>errorUrl</th>
-                <th>methodRequestData</th>
+                <th>Pursecurrency</th>
+                <th>Methodrequestdata</th>
+                <th>Fieldorder</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('payment_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('itc_payment_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.paysystem }}</td>
                 <td>{{ entity.payAccId }}</td>
+                <td>{{ entity.payAccSecretKey }}</td>
                 <td>{{ entity.owner }}</td>
                 <td>{{ entity.summa }}</td>
                 <td>{{ entity.currency }}</td>
                 <td>{{ entity.sendId }}</td>
                 <td>{{ entity.token }}</td>
                 <td>{{ entity.description }}</td>
-                <td>{{ entity.successUrl}}</td>
-                <td>{{ entity.errorUrl}}</td>
-                <td>{{ entity.methodRequestData}}</td>
+                <td>{{ entity.purseCurrency }}</td>
+                <td>{{ entity.methodRequestData }}</td>
+                <td>{{ entity.fieldOrder }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('payment_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('itc_payment_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('payment_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('itc_payment_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -53,7 +55,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('payment_new') }}">
+            <a href="{{ path('itc_payment_new') }}">
                 Create a new entry
             </a>
         </li>

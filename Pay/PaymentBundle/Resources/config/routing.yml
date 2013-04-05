@@ -1,0 +1,11 @@
+pay_index:
+    pattern: /itc/{_locale}
+    defaults: { _controller: PayPaymentBundle:Payment\Payment:index, _locale: %locale% }
+    
+itc_payment:
+    prefix:   /itc/{_locale}
+    resource: "@PayPaymentBundle/Controller/Payment"
+    type:     annotation
+    defaults: {_locale: %locale% }
+    requirements:
+      _locale : \w{2}  

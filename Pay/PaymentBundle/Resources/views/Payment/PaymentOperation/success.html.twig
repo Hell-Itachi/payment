@@ -1,7 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
- ------ {{format}}  ------- {{id}}
+-------id => {{id}} ----------<br><br>
+{% for req in request|keys %}
+{{req}}  =>  {{request[req]}} <br>
+{% endfor %} 
    {# <h1>Payment\Payment list</h1>
 
     <table class="records_list">

@@ -9,32 +9,44 @@
                 <th>Id</th>
                 <th>Systemid</th>
                 <th>Transactionid</th>
+                <th>Payaccountid</th>
                 <th>Amount</th>
                 <th>Currency</th>
                 <th>Sendid</th>
                 <th>Date</th>
-                <th>payAccountId</th>
+                <th>Payerpurse</th>
+                <th>Testmode</th>
+                <th>Secretkey</th>
+                <th>Hash</th>
+                <th>Wmidpayer</th>
+                <th>Wmidacc</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('response_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('itc_response_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.systemId }}</td>
                 <td>{{ entity.transactionId }}</td>
+                <td>{{ entity.payAccountId }}</td>
                 <td>{{ entity.amount }}</td>
                 <td>{{ entity.currency }}</td>
                 <td>{{ entity.sendId }}</td>
-                <td>{{ entity.date}}</td>
-                <td>{{ entity.payAccountId}}</td>
+                <td>{{ entity.date }}</td>
+                <td>{{ entity.payerPurse }}</td>
+                <td>{{ entity.testMode }}</td>
+                <td>{{ entity.secretKey }}</td>
+                <td>{{ entity.hash }}</td>
+                <td>{{ entity.WMIdPayer }}</td>
+                <td>{{ entity.WMIdAcc }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('response_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('itc_response_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('response_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('itc_response_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -45,7 +57,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('response_new') }}">
+            <a href="{{ path('itc_response_new') }}">
                 Create a new entry
             </a>
         </li>

@@ -52,13 +52,13 @@ class PaymentOperationController extends Controller
      */
     public function paymentSuccessAction(Request $request, $id)
     {
-//        $request = array(
-//            "LMI_PAYMENT_NO" => "1 "
-//            , "LMI_SYS_INVS_NO" => "281 "
-//            , "LMI_SYS_TRANS_NO" => "558 "
-//            , "LMI_SYS_TRANS_DATE" => "20020314 14:01:14 "
-//            , "FIELD_1" => "VALUE_1 "
-//            , "FIELD_2" => "VALUE_2 ");
+        /*$request = array(
+            "LMI_PAYMENT_NO" => "1 "
+            , "LMI_SYS_INVS_NO" => "281 "
+            , "LMI_SYS_TRANS_NO" => "558 "
+            , "LMI_SYS_TRANS_DATE" => "20020314 14:01:14 "
+            , "FIELD_1" => "VALUE_1 "
+            , "FIELD_2" => "VALUE_2 ");*/
         $request = $request->request->all();
 //        $hashTest = $this->get('response.hash.test.service');
 //        $hashTest->saveRequest($request, 'success');
@@ -76,8 +76,10 @@ class PaymentOperationController extends Controller
      */
     public function paymentResponseAction(Request $request, $id)
     {
+               
+        
         $request = $request->request->all();
-
+ 
 
         //Cyщность Payment
         /*
@@ -94,16 +96,8 @@ class PaymentOperationController extends Controller
          * "LMI_SYS_TRANS_DATE" -   Дата и время выполнения платежа 
          * "LMI_HASH"           -   Контрольная подпись 
          */
-//        $request = $this->get('doctrine')
-//                ->getRepository('PayPaymentBundle:Payment\Payment')
-//                ->find(3);
-//        echo "<pre>";
-//            print_r(unserialize($request->getFieldOrder()));
-//        echo "</pre>";
-//        die();
 
-
-        $request = array(
+      /*  $request = array(
             "LMI_MODE" => 1
             , "LMI_PAYMENT_AMOUNT" => 1.10
             , "LMI_PAYEE_PURSE" => "E145873692104"
@@ -118,23 +112,7 @@ class PaymentOperationController extends Controller
             , "LMI_HASH" => "7226D179BE6E94148F62D7CA0434695E"
             , "LMI_PAYMENT_DESC" => ""
             , "LMI_LANG" => "ru-RU"
-            , "_token" => "49fa1240d6987dacc6518ea3c1cd2839886e15cb");
-        /* $request = array(
-          "LMI_PAYMENT_AMOUNT" => 1.0
-          , "LMI_PAYMENT_NO" => 1
-          , "LMI_MODE" => 1
-          , "LMI_SYS_INVS_NO" => 281
-          , "LMI_SYS_TRANS_NO" => 558
-          , "LMI_PAYEE_PURSE" => "R397656178472"
-          , "LMI_PAYER_WM" => "809399319852"
-          , "LMI_PAYER_PURSE" => "R397656178472"
-          , "LMI_SYS_TRANS_DATE" => "20020314 14:01:14"
-          , "LMI_HASH" => "4B3A1919939249E7BB30648C3AF79185"
-          , "FIELD_1" => "VALUE_1"
-          , "FIELD_2" => "VALUE_2"); */
-//        echo "<pre>";
-//        print_r($request);
-//        echo "</pre>";
+            , "_token" => "49fa1240d6987dacc6518ea3c1cd2839886e15cb");*/
 
         $response = $this->get('doctrine')
                 ->getRepository('PayPaymentBundle:Payment\Response')
@@ -142,6 +120,7 @@ class PaymentOperationController extends Controller
 
 
         $hashTest = $this->get('response.hash.test.service');
+        $hashTest->saveRequest($request, 'payment');
         if ($hashTest->hashTest($request, $response)) {
 
             $createPost = $this->get($response->getPaySystem()->getMethodRequestData() . '.response.service');
@@ -170,8 +149,10 @@ class PaymentOperationController extends Controller
 //            "FIELD_1" => "VALUE_1",
 //            "FIELD_2" => "VALUE_2"
 //            );
-        $request = $request->request->all();
         
+        $request = $request->request->all();
+//        $hashTest = $this->get('response.hash.test.service');
+//        $hashTest->saveRequest($request, 'error');
         return array();
     }
 

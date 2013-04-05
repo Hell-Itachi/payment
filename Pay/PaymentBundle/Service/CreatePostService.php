@@ -19,12 +19,12 @@ class CreatePostService extends ContainerAware
                         ->getRepository('PayPaymentBundle:Payment\Payment')->find($id);
         //запрос что бы вытащить по $id из Pd.
         $pd = $this->em
-                        ->getRepository('ItcDocumentsBundle:Pd\Pd')->find($send_id);
+                        ->getRepository('ItcDocumentsBundle:PdOrder\PdOrder')->find($send_id);
 
         $params = array(
             $payment->getOwner() => $payment->getPayAccId(),
             $payment->getSumma() => $pd->getSumma1(),
-            $payment->getCurrency() => $payment->getPurseCurrency(),
+            //$payment->getCurrency() => $payment->getPurseCurrency(),
             $payment->getSendId() => $send_id,
             $payment->getToken() => $payment->getPayAccId(),
             $payment->getDescription() => ""

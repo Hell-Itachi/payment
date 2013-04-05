@@ -4,7 +4,7 @@ namespace Pay\PaymentBundle\Entity\PdPayment;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Pay\PaymentBundle\Entity\PdChildPayBundle;
+use Pay\PaymentBundle\Entity\PdChild;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  */
-class PdPayment extends PdChildPayBundle
+class PdPayment extends PdChild
 {
     /**
      * @var integer
